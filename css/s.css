@@ -1,0 +1,394 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+scroll-behavior: smooth;
+}
+
+:root {
+--main-font: 'Inter', sans-serif;
+--main-color: #f4f924;
+--background-color: #24272B;
+--white-color: #FFFFFF;
+--black-color: #000000;
+--description-color: #D2D0D0;
+
+--green-color: #4AFF6B;
+--ip-copied-background: #f4f9245c;
+--ip-copied-icon-background: #f4f9245c;
+
+--copy-ip-button-background: #f4f9245c;
+--how-to-join-button-background: rgba(210, 208, 208, 0.2);
+--stats-background: rgba(210, 208, 208, 0.05);
+--stat-icon-background-2: rgba(57, 190, 255, 0.5);
+
+--scroll-bar: rgba(210, 208, 208, 0.3);
+--scroll-bar-hover: #555555FF;
+
+--red-color: #FF7C7C;
+--warning-background: rgba(255, 124, 124, 0.17);
+--warning-icon-background: rgba(255, 124, 124, 0.5);
+--warning-color: #F5C1C1;
+
+/* Admin-Team rank colors */
+--default-rank-color: rgba(210, 208, 208, 0.3);
+}
+.upload {
+display: flex;
+margin: 10px 0; /* Jarak antar upload */
+flex-wrap: wrap; /* Membuat responsif saat layar kecil */
+}
+
+.upload img {
+width: 50px;
+height: 50px; 
+border-radius: 50%; 
+margin-right: 10px;
+}
+
+
+
+.info1 {
+display: flex;
+flex-direction: column; /* Agar nama ditampilkan di atas */
+}
+
+.details {
+display: flex; /* Agar tanggal dan jam ditampilkan berdampingan */
+gap: 150px; /* Jarak antara tanggal dan jam */
+}
+
+@media (max-width: 600px) {
+.upload {
+  align-items: flex-start; /* Menyelaraskan ke kiri pada layar kecil */
+}
+
+.profile-pic {
+  margin-bottom: 5px; /* Jarak di bawah foto profil pada layar kecil */
+}
+}
+
+body {
+background: var(--background-color);
+font-family: var(--main-font);
+}
+
+/* Navbar */
+.navbar {
+display: flex;
+width: 100%;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 20px 150px;
+background: var(--background-color);
+transition: max-height 0.3s ease-in-out;
+position: sticky; /* Make the navbar sticky */
+top: 0; /* Position at the top */
+z-index: 1000; /* Ensure the navbar is above other content */
+}
+
+.navbar a {
+text-decoration: none;
+}
+
+.navbar .menu-mobile {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+}
+
+.navbar .menu-mobile .logo {
+display: flex;
+flex-direction: row;
+justify-content: left;
+align-items: center;
+}
+
+.navbar .menu-mobile .logo img {
+max-width: 130px;
+height: auto;
+}
+
+.navbar .menu-mobile .logo h3 {
+color: var(--white-color);
+font-weight: 900;
+font-size: 20px;
+}
+
+.navbar .links {
+display: flex;
+flex-direction: row;
+gap: 30px;
+transition: opacity 0.3s ease-in-out;
+}
+
+/* Navbar links with icons */
+.navbar .links .link {
+display: flex;
+align-items: center;
+color: var(--description-color);
+font-size: 18px;
+font-weight: 600;
+text-decoration: none;
+position: relative;
+padding: 10px 15px;
+transition: background-color 0.3s;
+}
+
+.navbar .links .link i {
+font-size: 24px; /* Besarkan ukuran ikon */
+margin-left: 15px; /* Jarak antara teks dan ikon */
+transition: color 0.3s;
+}
+
+.navbar .links .link.active i,
+.navbar .links .link:not(.active):hover i {
+color: var(--main-color); /* Warna ikon saat aktif atau hover */
+}
+
+/* Responsive adjustments for links with icons */
+@media screen and (max-width: 867px) {
+.navbar .links .link {
+padding: 15px; /* Tambah padding agar lebih rapi di mobile */
+}
+
+.navbar .links .link i {
+font-size: 20px; /* Sesuaikan ukuran ikon di mobile */
+}
+}
+
+
+.navbar .links .link.active {
+color: var(--white-color);
+}
+
+.navbar .links .link.active::after {
+content: "";
+position: absolute;
+bottom: -4px;
+left: 0;
+width: 80px;
+height: 3px;
+border-radius: 5px;
+background: var(--main-color);
+}
+
+.navbar .links .link:not(.active):hover {
+color: var(--white-color);
+background-color: rgba(255, 255, 255, 0.2); /* Efek hover */
+border-radius: 5px; /* Rounded corners on hover */
+}
+
+.navbar .menu-mobile .hamburger {
+color: var(--white-color);
+margin-left: 300px;
+font-size: 25px;
+cursor: pointer;
+transition: opacity 0.5s;
+display: none; /* Tampilkan tombol hamburger */
+}
+
+.navbar .menu-mobile .hamburger:hover {
+opacity: 0.8;
+}
+
+/* Responsive Navbar */
+@media screen and (max-width: 867px) {
+.navbar {
+padding: 20px 30px;
+flex-direction: column;
+align-items: flex-start;
+}
+
+.navbar .links {
+display: none; /* Hide links by default on mobile */
+flex-direction: column;
+width: 50%;
+opacity: 0;
+z-index: -1;
+position: absolute; /* Posisi absolut untuk dropdown */
+top: 80px; /* Jarak dari atas */
+left: 0; /* Jarak dari kiri */
+background-color: rgba(36, 39, 43, 0.95); /* Warna latar belakang dropdown */
+height: calc(100vh - 60px); /* Tinggi penuh minus tinggi navbar */
+transform: translateX(-100%); /* Awalnya posisikan di luar tampilan */
+transition: 0.3s ease; /* Tambahkan efek transisi */
+}
+
+.navbar.active .links {
+display: flex; /* Show links when active */
+opacity: 1;
+transform: translateX(0); /* Geser ke dalam tampilan */
+z-index: 20;
+transition: 0.9s ease;
+}
+
+.navbar .menu-mobile .hamburger {
+display: flex; /* Show hamburger icon on mobile */
+}
+
+.navbar .menu-mobile .logo {
+display: flex; /* Tampilkan logo di mobile */
+align-items: center; /* Vertikal center */
+}
+
+.navbar .menu-mobile .logo img {
+height: 40px; /* Atur ukuran logo */
+}
+}
+
+#footer {
+background-color: #1f1f1f;
+padding: 30px 20px;
+text-align: center;
+color: #ddd;
+position: relative;
+bottom: 0;
+width: 100%;
+}
+
+#footer .footer-content {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 10px;
+}
+
+#footer .social-links {
+margin-bottom: 15px;
+}
+
+#footer .social-links a {
+margin: 0 10px;
+font-size: 24px;
+color: #ffe54f;
+transition: color 0.3s ease;
+}
+
+#footer .social-links a:hover {
+color: #f1ff76;
+}
+
+#footer p {
+font-size: 16px;
+color: #ddd;
+margin: 0;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+#footer p {
+font-size: 14px;
+}
+
+#footer .social-links a {
+font-size: 20px;
+}
+}
+/* Scrollbar */
+::-webkit-scrollbar {
+width: 5px;
+}
+
+::-webkit-scrollbar-track {
+background: var(--stats-background);
+}
+
+::-webkit-scrollbar-thumb {
+background: var(--scroll-bar);
+}
+
+::-webkit-scrollbar-thumb:hover {
+background: var(--scroll-bar-hover);
+}
+
+/* Other */
+section:not(#header) .content {
+padding: 90px 150px;
+width: 100%;
+}
+
+/* Responsive */
+@media screen and (max-width: 1625px) {
+section:not(#header) .content {
+padding: 90px;
+}
+
+#footer {
+padding: 20px 90px;
+}
+}
+
+@media screen and (max-width: 819px) {
+section:not(#header) .content {
+padding: 50px 30px;
+}
+
+#footer {
+padding: 20px 30px;
+}
+}
+
+@media screen and (max-width: 564px) {
+#footer {
+flex-direction: column;
+gap: 30px;
+align-items: center;
+justify-content: center;
+text-align: center;
+}
+}
+
+#contact {
+background: #1f1f1f;
+padding: 60px 20px;
+text-align: center;
+color: #fff;
+}
+
+#contact .section-title {
+font-size: 36px;
+font-weight: bold;
+margin-bottom: 20px;
+}
+
+#contact .contact-description {
+font-size: 18px;
+margin-bottom: 30px;
+color: #ddd;
+}
+
+#contact .contact-button {
+display: inline-block;
+padding: 15px 30px;
+font-size: 18px;
+font-weight: bold;
+color: white;
+background: #25D366; /* WhatsApp color */
+border-radius: 5px;
+text-decoration: none;
+transition: background 0.3s ease;
+}
+
+#contact .contact-button:hover {
+background: #128C7E; /* Darker shade on hover */
+}
+
+/* Responsive adjustments for contact section */
+@media (max-width: 768px) {
+#contact .section-title {
+font-size: 28px;
+}
+
+#contact .contact-description {
+font-size: 16px;
+}
+
+#contact .contact-button {
+font-size: 16px;
+padding: 10px 20px;
+}
+}

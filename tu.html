@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="images/logo.png">
+  <link rel="stylesheet" href="css/s.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <title>Tutorial: Join Minecraft Server</title>
+  <style>
+    body {
+      background-color: #1f1f1f;
+      color: #ffffff;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .button {
+      display: block;
+      margin: 20px auto;
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      background: #ff4f4f;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .button:hover {
+      background: #ff7676;
+      transform: scale(1.05);
+    }
+
+    /* Popup Modal Styles */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; 
+      z-index: 1; 
+      left: 0;
+      top: 0;
+      width: 100%; 
+      height: 100%; 
+      overflow: auto; 
+      background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
+      padding-top: 60px;
+      animation: fadeIn 0.5s;
+    }
+
+    .modal-content {
+      background-color: #2a2a2a;
+      margin: 5% auto; 
+      padding: 20px;
+      border: 1px solid #888;
+      width: 90%; /* Could be more or less, depending on screen size */
+      max-width: 600px;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      animation: zoomIn 0.5s;
+    }
+
+    .close {
+      color: #ffffff;
+      float: right;
+      font-size: 24px;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .close:hover {
+      color: #ff4f4f;
+    }
+
+    .tutorial-image {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s;
+    }
+
+    .tutorial-image:hover {
+      transform: scale(1.05);
+    }
+
+    .instructions {
+      line-height: 1.6;
+    }
+
+    .instruction-item {
+      background: #3e3e3e;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .instruction-item:hover {
+      background: #ff4f4f;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.7); }
+      to { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <button class="button" id="tutorialBtn">Buka Tutorial Bergabung</button>
+
+  <!-- The Modal -->
+  <div id="tutorialModal" class="modal">
+    <div class="modal-content">
+      <span class="close"><i class='bx bx-x'></i></span>
+      <h1>Tutorial: Cara Bergabung dengan Server Minecraft</h1>
+      <img src="https://via.placeholder.com/600x400" alt="Join Minecraft Server" class="tutorial-image">
+      <div class="instructions">
+        <div class="instruction-item">1. Buka Minecraft dan pilih "Multiplayer".</div>
+        <div class="instruction-item">2. Klik "Add Server" untuk menambahkan server baru.</div>
+        <div class="instruction-item">3. Masukkan IP server dan nama yang diinginkan.</div>
+        <div class="instruction-item">4. Klik "Done" dan pilih server yang telah ditambahkan.</div>
+        <div class="instruction-item">5. Klik "Join Server" untuk masuk ke permainan!</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Get the modal
+    var modal = document.getElementById("tutorialModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("tutorialBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
