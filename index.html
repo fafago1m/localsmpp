@@ -2,37 +2,42 @@
 <html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>LOKAL.SMP // MAINFRAME</title>
-    <link rel="icon" href="images/lokal.png">
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AETHER // ARCHITECT - Server Solutions</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@300;500;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
+                        'display': ['"Space Grotesk"', 'sans-serif'],
+                        'body': ['"Plus Jakarta Sans"', 'sans-serif'],
+                        'mono': ['"Space Mono"', 'monospace'],
                     },
                     colors: {
-                        bg: '#0a0a0a',          /* Hitam Pekat */
-                        panel: '#121212',       /* Abu Sangat Gelap */
-                        surface: '#1e1e22',     /* Abu Medium */
-                        border: '#33333a',      /* Garis Abu */
-                        accent: '#ff6b00',      /* Orange Industrial */
-                        accentHover: '#e65c00',
-                        coin: '#eab308',        /* Gold */
-                        txt: '#ededed',
-                        txtDim: '#8a8a93',
+                        'accent': '#3b82f6', 
+                        'success': '#22c55e',
+                        'dark': '#050505',
+                        'paper': '#F3F4F6',
                     },
-                    boxShadow: {
-                        'hard': '4px 4px 0px 0px rgba(255, 107, 0, 0.2)',
-                        'hard-gold': '4px 4px 0px 0px rgba(234, 179, 8, 0.2)',
+                    animation: {
+                        'marquee': 'marquee 25s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
                     }
                 }
             }
@@ -40,606 +45,614 @@
     </script>
 
     <style>
+        /* --- CORE AESTHETICS --- */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; border-left: 1px solid #000; }
+        ::-webkit-scrollbar-thumb { background: #000; }
+        ::-webkit-scrollbar-thumb:hover { background: #333; }
+
+        ::selection { background: #000; color: #fff; }
+
         body {
-            background-color: #0a0a0a;
-            color: #ededed;
+            background-color: #fdfdfd;
+            color: #171717;
             background-image: 
-                linear-gradient(to right, #1a1a1a 1px, transparent 1px),
-                linear-gradient(to bottom, #1a1a1a 1px, transparent 1px);
-            background-size: 50px 50px;
+                linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
         }
-        
-        .tech-border {
-            border: 2px solid #33333a;
-            background: #121212;
-            transition: all 0.2s ease;
+
+        /* Brutalist Components */
+        .btn-brutal {
+            border: 2px solid #000;
+            box-shadow: 4px 4px 0px 0px #000;
+            transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
+            overflow: hidden;
         }
-        
-        .tech-border::after {
-            content: '+';
-            position: absolute;
-            bottom: -8px;
-            right: -8px;
-            color: #33333a;
-            font-family: 'JetBrains Mono', monospace;
-            background: #0a0a0a;
-            padding: 0 4px;
+        .btn-brutal:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px 0px #000;
+        }
+        .btn-brutal:active {
+            transform: translate(2px, 2px);
+            box-shadow: 0px 0px 0px 0px #000;
         }
 
-        .tech-border:hover {
-            border-color: #ff6b00;
-            box-shadow: 4px 4px 0px 0px rgba(255, 107, 0, 0.2);
+        .card-brutal {
+            border: 2px solid #000;
+            box-shadow: 8px 8px 0px 0px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            background: white;
         }
-        .tech-border:hover::after { color: #ff6b00; }
-
-        /* Khusus Card Coin */
-        .coin-card:hover {
-            border-color: #eab308;
-            box-shadow: 4px 4px 0px 0px rgba(234, 179, 8, 0.2);
+        .card-brutal:hover {
+            box-shadow: 12px 12px 0px 0px #000;
+            transform: translateY(-4px);
         }
 
-        .btn-accent {
-            background: #ff6b00;
-            color: black;
-            font-weight: 800;
+        /* Tech Badge */
+        .tech-badge {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            border: 2px solid #ff6b00;
-            transition: all 0.15s;
-        }
-        .btn-accent:hover { background: transparent; color: #ff6b00; }
-        .btn-accent:active { transform: scale(0.98); }
-
-        /* Progress Bar Striped */
-        .progress-striped {
-            background-image: linear-gradient(45deg,rgba(0,0,0,.15) 25%,transparent 25%,transparent 50%,rgba(0,0,0,.15) 50%,rgba(0,0,0,.15) 75%,transparent 75%,transparent);
-            background-size: 1rem 1rem;
+            background: #fff;
+            border: 1px solid #000;
+            padding: 2px 8px;
+            box-shadow: 2px 2px 0px 0px #000;
         }
 
-        /* Hide Scrollbar */
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        /* Console Typing Cursor */
+        .cursor::after {
+            content: '█';
+            animation: blink 1s infinite;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-        ::-webkit-scrollbar { width: 10px; background: #0a0a0a; border-left: 2px solid #33333a; }
-        ::-webkit-scrollbar-thumb { background: #ff6b00; border: 2px solid #0a0a0a; }
+        /* Noise Overlay */
+        .noise {
+            position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.04;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        
+        /* Accordion Style */
+        .accordion-content { transition: max-height 0.3s ease-out, padding 0.3s ease; max-height: 0; overflow: hidden; }
+        .accordion-item.active .accordion-content { max-height: 500px; }
+        .accordion-item.active .bx-chevron-down { transform: rotate(180deg); }
     </style>
 </head>
+<body class="font-body overflow-x-hidden">
+    <div class="noise"></div>
 
-<body class="antialiased overflow-x-hidden pb-24 md:pb-0">
-
-    <nav class="fixed top-0 w-full z-50 bg-bg/95 border-b-2 border-border backdrop-blur-sm">
-        <div class="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between font-mono text-sm">
-            <div class="flex items-center gap-4">
-                <div class="w-8 h-8 bg-accent flex items-center justify-center text-black font-black text-lg leading-none pt-1">L</div>
-                <span class="font-bold tracking-widest uppercase">LOKAL<span class="text-accent">.SMP</span> // SYSTEM</span>
-            </div>
-
-            <div class="hidden md:flex items-center gap-8 text-txtDim">
-                <a href="#" class="hover:text-accent transition">[HOME]</a>
-                <a href="#store" class="hover:text-accent transition">[TERMINAL_STORE]</a>
-                <a href="#coins" class="hover:text-coin transition">[CURRENCY]</a>
-                <a href="#vote" class="hover:text-accent transition">[VOTE_DATA]</a>
-            </div>
-
-            <div class="flex items-center gap-4">
-                <div class="hidden md:flex items-center gap-3 px-3 py-1.5 bg-panel border-2 border-border">
-                    <div class="w-2.5 h-2.5 bg-accent rounded-sm animate-pulse"></div>
-                    <span class="text-txtDim">STATUS:</span>
-                    <span class="text-accent font-bold" id="player-count-top">CONNECTING...</span>
+    <nav class="fixed top-0 w-full z-50 border-b-2 border-black bg-white/95 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 h-20 flex justify-between items-center relative">
+            <div class="flex items-center gap-3 group cursor-pointer z-50">
+                <div class="w-10 h-10 bg-black flex items-center justify-center text-white font-bold font-display text-xl group-hover:bg-accent transition-colors">A</div>
+                <div class="flex flex-col">
+                    <span class="font-display font-bold text-xl leading-none tracking-tighter">AETHER</span>
+                    <span class="font-mono text-[10px] text-gray-500 tracking-widest hidden sm:block">BUILD. DEPLOY. DOMINATE.</span>
                 </div>
-                <button onclick="copyIp()" class="hidden md:flex btn-accent px-4 py-1.5 text-sm items-center gap-2">
-                    <i class='bx bx-copy'></i> IP: PLAY.LOKAL.ID
+            </div>
+
+            <div class="hidden md:flex gap-8 items-center bg-gray-100 px-6 py-2 rounded-full border border-black/10">
+                <a href="#work" class="text-sm font-medium hover:text-accent transition-colors">Showcase</a>
+                <a href="#features" class="text-sm font-medium hover:text-accent transition-colors">Engine</a>
+                <a href="#pricing" class="text-sm font-medium hover:text-accent transition-colors">Pricing</a>
+                <a href="#faq" class="text-sm font-medium hover:text-accent transition-colors">FAQ</a>
+            </div>
+
+            <div class="hidden md:flex gap-4">
+                <button class="font-mono text-xs font-bold hover:underline">DOCS</button>
+                <button class="btn-brutal bg-accent text-white px-6 py-2 font-bold text-xs uppercase hover:bg-blue-600">
+                    Console Login
                 </button>
+            </div>
+
+            <button id="mobile-menu-btn" class="md:hidden z-50 text-3xl focus:outline-none">
+                <i class='bx bx-menu'></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="fixed inset-0 bg-white z-40 flex flex-col pt-24 px-6 gap-6 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden border-l-2 border-black">
+            <a href="#work" class="text-2xl font-display font-bold border-b border-gray-200 pb-4" onclick="toggleMobileMenu()">// Showcase</a>
+            <a href="#features" class="text-2xl font-display font-bold border-b border-gray-200 pb-4" onclick="toggleMobileMenu()">// Engine</a>
+            <a href="#pricing" class="text-2xl font-display font-bold border-b border-gray-200 pb-4" onclick="toggleMobileMenu()">// Pricing</a>
+            <a href="#faq" class="text-2xl font-display font-bold border-b border-gray-200 pb-4" onclick="toggleMobileMenu()">// FAQ</a>
+            
+            <div class="mt-auto mb-8 space-y-4">
+                <button class="w-full border-2 border-black py-4 font-bold font-mono text-sm uppercase">Read Documentation</button>
+                <button class="w-full bg-accent text-white border-2 border-black py-4 font-bold font-mono text-sm uppercase shadow-[4px_4px_0px_0px_#000]">Login Console</button>
             </div>
         </div>
     </nav>
 
-    <header class="pt-32 pb-20 px-6 max-w-[1400px] mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <section class="relative pt-32 pb-16 md:pt-40 md:pb-24 px-4 md:px-6 border-b-2 border-black overflow-hidden">
+        <div class="absolute right-0 top-0 w-1/3 h-full bg-gray-50 border-l-2 border-black hidden lg:block"></div>
+
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center relative z-10">
+            
             <div class="lg:col-span-7">
-                <div class="inline-block border border-accent bg-accent/10 px-3 py-1 text-accent font-mono text-xs font-bold mb-6 tracking-wider">
-                    > LATEST_PATCH: SEASON_V_INITIATED
+                <div class="inline-flex items-center gap-2 border border-black bg-yellow-300 px-4 py-1.5 text-xs font-bold font-mono mb-6 md:mb-8 shadow-[4px_4px_0px_0px_#000]">
+                    <i class='bx bxs-zap animate-pulse'></i>
+                    V3.0 IS LIVE
                 </div>
-                <h1 class="text-6xl md:text-8xl font-black uppercase leading-none tracking-tighter mb-8">
-                    DEPLOY INTO <br> 
-                    <span class="text-accent text-stroke">THECHAOS.</span>
+                
+                <h1 class="font-display text-5xl sm:text-6xl md:text-8xl font-bold leading-[0.9] tracking-tighter text-black mb-6">
+                    SERVER WEB <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">ARCHITECT.</span>
                 </h1>
-                <p class="text-lg text-txtDim max-w-xl leading-relaxed mb-10 font-mono border-l-4 border-accent pl-4">
-                    Server Minecraft Indonesia dengan ekonomi berbasis pemain yang brutal. Tanpa fitur Pay-to-Win. Murni strategi dan dominasi.
+                
+                <p class="text-base md:text-xl text-gray-600 max-w-lg mb-8 md:mb-10 leading-relaxed font-medium">
+                    Platform pembuatan website server Minecraft #1. Integrasi otomatis, store Tebex, dan status live server.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4 font-mono">
-                    <button onclick="copyIp()" class="btn-accent px-8 py-4 text-lg flex items-center justify-center gap-3">
-                        <i class='bx bx-play text-2xl'></i>
-                        <span id="ip-btn-text">START SESSION</span>
-                    </button>
-                    <a href="https://chat.whatsapp.com/" class="px-8 py-4 border-2 border-border text-txtDim font-bold uppercase hover:border-txt hover:text-txt transition text-center flex items-center justify-center gap-2">
-                        <i class='bx bxl-discord text-xl'></i>
-                        COMMS CHANNEL
+
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#pricing" class="btn-brutal bg-black text-white px-8 py-4 font-bold text-sm tracking-wide uppercase inline-flex items-center justify-center gap-2 group">
+                        <span>Deploy Now</span>
+                        <i class='bx bx-right-arrow-alt group-hover:translate-x-1 transition-transform'></i>
+                    </a>
+                    <a href="#" class="btn-brutal bg-white text-black px-8 py-4 font-bold text-sm tracking-wide uppercase inline-flex items-center justify-center gap-2">
+                        <i class='bx bx-play-circle text-xl'></i>
+                        View Demo
                     </a>
                 </div>
+                
+                <div class="mt-8 md:mt-12 flex items-center gap-6 font-mono text-xs text-gray-500">
+                    <div class="flex -space-x-3">
+                        <img class="w-8 h-8 rounded-full border-2 border-white bg-gray-300" src="https://i.pravatar.cc/100?img=1" alt="">
+                        <img class="w-8 h-8 rounded-full border-2 border-white bg-gray-300" src="https://i.pravatar.cc/100?img=3" alt="">
+                        <img class="w-8 h-8 rounded-full border-2 border-white bg-gray-300" src="https://i.pravatar.cc/100?img=4" alt="">
+                    </div>
+                    <p class="hidden sm:block">Digunakan <span class="font-bold text-black">2,400+</span> Owner</p>
+                </div>
             </div>
-            
-            <div class="lg:col-span-5 tech-border aspect-square lg:aspect-auto lg:h-[500px] p-2">
-                <div class="h-full w-full bg-surface relative overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1607604276583-eef5f0b7b0b5?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover opacity-50 grayscale contrast-125 mix-blend-overlay">
-                    <div class="absolute inset-0 bg-gradient-to-t from-bg via-bg/50 to-transparent"></div>
+
+            <div class="lg:col-span-5 relative mt-8 lg:mt-0">
+                <div class="relative w-full aspect-[4/5] md:aspect-square border-2 border-black bg-black p-2 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.2)] md:shadow-[12px_12px_0px_0px_rgba(0,0,0,0.2)]">
+                    <div class="bg-gray-800 p-3 flex justify-between items-center border-b border-gray-700">
+                        <div class="flex gap-2">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                        <div class="font-mono text-[10px] text-gray-400">root@node:~</div>
+                    </div>
                     
-                    <div class="absolute bottom-6 left-6 right-6 flex flex-col gap-2 font-mono">
-                        <div class="flex justify-between text-sm text-txtDim border-b border-border pb-2">
-                            <span>ACTIVE_PLAYERS:</span>
-                            <span class="text-accent font-bold text-lg" id="player-count-hero">--</span>
+                    <div class="h-full bg-[#0c0c0c] p-4 md:p-6 font-mono text-xs md:text-sm overflow-hidden flex flex-col relative">
+                        <div class="text-green-500/20 absolute top-0 left-0 w-full h-full pointer-events-none text-[10px] break-all opacity-20">
+                            01010101010010101010101010101010101
+                            10101010101010101010101010101010101
                         </div>
-                         <div class="flex justify-between text-sm text-txtDim border-b border-border pb-2">
-                            <span>SERVER_LATENCY:</span>
-                            <span class="text-txt font-bold">14ms (STABLE)</span>
-                        </div>
-                        <div class="flex justify-between text-sm text-txtDim">
-                            <span>CORE_VERSION:</span>
-                            <span class="text-txt font-bold">JAVA 1.20.4</span>
-                        </div>
-                    </div>
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-accent/30 text-6xl font-thin">+</div>
-                </div>
-            </div>
-        </div>
-    </header>
 
-    <section id="store" class="py-24 px-6 bg-panel border-y-2 border-border">
-        <div class="max-w-[1400px] mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-12 gap-6">
-                <div>
-                    <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight mb-2">ACCESS <span class="text-accent">LICENSES</span></h2>
-                    <p class="font-mono text-txtDim text-sm">> Pilih tingkat akses operasional Anda.</p>
-                </div>
-                <div class="md:hidden font-mono text-[10px] text-accent animate-pulse flex items-center gap-2">
-                    >>> SWIPE_TO_BROWSE
-                </div>
-            </div>
-
-            <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-8 -mx-6 px-6 md:grid md:grid-cols-4 md:gap-6 md:pb-0 md:mx-0 md:px-0 no-scrollbar">
-                
-                <div class="min-w-[85vw] sm:min-w-[350px] md:min-w-0 snap-center flex-shrink-0 tech-border p-6 flex flex-col h-full bg-bg">
-                    <div class="mb-4 flex justify-between items-center">
-                        <h3 class="font-black text-2xl uppercase tracking-wider">IRON</h3>
-                        <i class='bx bxs-shield-alt-2 text-3xl text-border'></i>
-                    </div>
-                    <div class="font-mono text-txtDim text-sm mb-6 pb-4 border-b-2 border-border">
-                        ID: TIER_01 // <span class="text-white font-bold text-xl">Rp 20.000</span>
-                    </div>
-                    <ul class="space-y-3 mb-8 flex-1 font-mono text-sm text-txtDim">
-                        <li class="flex gap-2"><span class="text-accent">✓</span> Chat Prefix [Iron]</li>
-                        <li class="flex gap-2"><span class="text-accent">✓</span> 2x Set Home Data</li>
-                        <li class="flex gap-2"><span class="text-accent">✓</span> Standard Queue</li>
-                    </ul>
-                    <button class="w-full py-3 border-2 border-border font-bold uppercase hover:border-txt hover:bg-txt hover:text-bg transition font-mono text-sm">
-                        ACQUIRE LICENSE
-                    </button>
-                </div>
-
-                <div class="min-w-[85vw] sm:min-w-[350px] md:min-w-0 snap-center flex-shrink-0 tech-border p-6 flex flex-col h-full bg-bg">
-                    <div class="mb-4 flex justify-between items-center">
-                        <h3 class="font-black text-2xl uppercase tracking-wider text-yellow-500">GOLD</h3>
-                        <i class='bx bxs-cuboid text-3xl text-yellow-500/50'></i>
-                    </div>
-                    <div class="font-mono text-txtDim text-sm mb-6 pb-4 border-b-2 border-border">
-                        ID: TIER_02 // <span class="text-yellow-500 font-bold text-xl">Rp 50.000</span>
-                    </div>
-                    <ul class="space-y-3 mb-8 flex-1 font-mono text-sm text-txtDim">
-                        <li class="flex gap-2"><span class="text-accent">✓</span> Chat Prefix [Gold]</li>
-                        <li class="flex gap-2"><span class="text-accent">✓</span> 5x Set Home Data</li>
-                        <li class="flex gap-2"><span class="text-accent">✓</span> Access /workbench</li>
-                    </ul>
-                    <button class="w-full py-3 border-2 border-border font-bold uppercase hover:border-yellow-500 hover:bg-yellow-500 hover:text-black transition font-mono text-sm">
-                        ACQUIRE LICENSE
-                    </button>
-                </div>
-
-                 <div class="min-w-[85vw] sm:min-w-[350px] md:min-w-0 snap-center flex-shrink-0 tech-border p-6 flex flex-col h-full bg-surface border-accent relative shadow-hard md:transform md:-translate-y-4 z-10">
-                    <div class="absolute top-0 right-0 bg-accent text-black font-mono text-xs font-bold px-3 py-1">
-                        RECOMMENDED_UNIT
-                    </div>
-                    <div class="mb-4 flex justify-between items-center">
-                        <h3 class="font-black text-2xl uppercase tracking-wider text-accent">DIAMOND</h3>
-                        <i class='bx bxs-diamond text-3xl text-accent/50'></i>
-                    </div>
-                    <div class="font-mono text-txtDim text-sm mb-6 pb-4 border-b-2 border-accent/30">
-                        ID: TIER_03 // <span class="text-accent font-bold text-2xl">Rp 80.000</span>
-                    </div>
-                    <ul class="space-y-3 mb-8 flex-1 font-mono text-sm text-txt">
-                        <li class="flex gap-2"><span class="text-accent">✓</span> <strong>Lobby Flight Module</strong></li>
-                        <li class="flex gap-2"><span class="text-accent">✓</span> 10x Set Home Data</li>
-                        <li class="flex gap-2"><span class="text-accent">✓</span> Priority Queue Access</li>
-                        <li class="flex gap-2"><span class="text-accent">✓</span> Death Point Recovery</li>
-                    </ul>
-                    <button class="btn-accent w-full py-3 text-sm">
-                        ACQUIRE LICENSE
-                    </button>
-                </div>
-
-                <div class="min-w-[85vw] sm:min-w-[350px] md:min-w-0 snap-center flex-shrink-0 tech-border p-6 flex flex-col h-full bg-bg">
-                    <div class="mb-4 flex justify-between items-center">
-                        <h3 class="font-black text-2xl uppercase tracking-wider text-emerald-500">EMERALD</h3>
-                        <i class='bx bxs-component text-3xl text-emerald-500/50'></i>
-                    </div>
-                    <div class="font-mono text-txtDim text-sm mb-6 pb-4 border-b-2 border-border">
-                        ID: TIER_04 // <span class="text-emerald-500 font-bold text-xl">Rp 120.000</span>
-                    </div>
-                    <ul class="space-y-3 mb-8 flex-1 font-mono text-sm text-txtDim">
-                        <li class="flex gap-2"><span class="text-accent">✓</span> RGB/Gradient Identifier</li>
-                        <li class="flex gap-2"><span class="text-accent">✓</span> Unlimited Home Data</li>
-                        <li class="flex gap-2"><span class="text-accent">✓</span> Custom Particle Emitter</li>
-                    </ul>
-                    <button class="w-full py-3 border-2 border-border font-bold uppercase hover:border-emerald-500 hover:bg-emerald-500 hover:text-black transition font-mono text-sm">
-                        ACQUIRE LICENSE
-                    </button>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="coins" class="py-24 px-6 bg-[#0d0d0d] border-y-2 border-border relative overflow-hidden">
-        <div class="absolute inset-0 opacity-[0.02] bg-[repeating-linear-gradient(45deg,#fff,#fff_1px,transparent_1px,transparent_10px)] pointer-events-none"></div>
-
-        <div class="max-w-[1400px] mx-auto relative z-10">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-12 gap-6">
-                <div class="border-l-4 border-coin pl-6">
-                    <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tighter text-white leading-none">
-                        RESOURCE <br><span class="text-coin">EXCHANGE</span>
-                    </h2>
-                    <p class="font-mono text-txtDim text-xs mt-3 max-w-md">
-                        > ACQUIRE_ASSETS: Tukar mata uang IDR dengan Coin In-Game.
-                    </p>
-                </div>
-                <div class="md:hidden font-mono text-[10px] text-coin animate-pulse flex items-center gap-2">
-                    >>> SWIPE_TO_BROWSE
-                </div>
-            </div>
-
-            <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-8 -mx-6 px-6 md:grid md:grid-cols-4 md:gap-6 md:pb-0 md:mx-0 md:px-0 no-scrollbar">
-
-                <div class="min-w-[85vw] sm:min-w-[350px] md:min-w-0 snap-center flex-shrink-0 group relative bg-bg border-2 border-border hover:border-coin/50 transition-all duration-300 p-6 flex flex-col hover:-translate-y-1">
-                    <div class="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-txtDim group-hover:border-coin transition-colors"></div>
-                    <div class="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-txtDim group-hover:border-coin transition-colors"></div>
-                    <div class="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-txtDim group-hover:border-coin transition-colors"></div>
-                    <div class="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-txtDim group-hover:border-coin transition-colors"></div>
-
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="font-mono text-[10px] text-txtDim">ID: COIN_T1</div>
-                        <i class='bx bxs-hdd text-2xl text-border group-hover:text-coin transition-colors'></i>
-                    </div>
-                    <div class="flex-1 flex flex-col items-center text-center mb-6">
-                        <div class="w-16 h-16 rounded-full bg-surface border border-border flex items-center justify-center mb-4 shadow-[0_0_20px_-5px_rgba(0,0,0,1)] group-hover:shadow-[0_0_20px_-5px_rgba(234,179,8,0.3)] transition-all">
-                            <i class='bx bxs-coin-stack text-3xl text-txtDim group-hover:text-coin transition-colors'></i>
-                        </div>
-                        <h3 class="font-black text-white uppercase tracking-wide text-lg">SMALL POUCH</h3>
-                        <div class="text-coin font-mono font-bold text-2xl mt-1">10,000 C</div>
-                    </div>
-                    <div class="border-t border-border pt-4">
-                        <div class="flex justify-between items-center mb-3 font-mono text-xs">
-                            <span class="text-txtDim line-through">Rp 15.000</span>
-                            <span class="text-white font-bold">Rp 10.000</span>
-                        </div>
-                        <button class="w-full py-3 border border-txtDim text-txtDim font-bold font-mono text-xs uppercase hover:bg-coin hover:text-black hover:border-coin transition-all">
-                            INITIATE TRADE
-                        </button>
-                    </div>
-                </div>
-
-                <div class="min-w-[85vw] sm:min-w-[350px] md:min-w-0 snap-center flex-shrink-0 group relative bg-surface border-2 border-coin transition-all duration-300 p-6 flex flex-col shadow-[0_0_30px_-15px_rgba(234,179,8,0.15)] hover:shadow-[0_0_30px_-10px_rgba(234,179,8,0.3)] md:transform md:-translate-y-2 z-10">
-                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-coin text-black font-black font-mono text-[10px] px-3 py-1 uppercase tracking-widest">
-                        BEST_VALUE
-                    </div>
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="font-mono text-[10px] text-coin">ID: COIN_T2</div>
-                        <i class='bx bxs-microchip text-2xl text-coin'></i>
-                    </div>
-                    <div class="flex-1 flex flex-col items-center text-center mb-6">
-                        <div class="w-20 h-20 rounded-full bg-coin/10 border border-coin flex items-center justify-center mb-4 shadow-[0_0_30px_-5px_rgba(234,179,8,0.4)]">
-                            <i class='bx bxs-layer text-4xl text-coin'></i>
-                        </div>
-                        <h3 class="font-black text-white uppercase tracking-wide text-xl">MEDIUM BAG</h3>
-                        <div class="text-coin font-mono font-bold text-3xl mt-1">55,000 C</div>
-                        <div class="mt-2 text-[10px] font-mono text-green-400 bg-green-400/10 px-2 py-0.5 rounded">
-                            +5% BONUS INC
-                        </div>
-                    </div>
-                    <div class="border-t border-coin/20 pt-4">
-                        <div class="flex justify-between items-center mb-3 font-mono text-xs">
-                            <span class="text-txtDim line-through">Rp 55.000</span>
-                            <span class="text-white font-bold text-lg">Rp 50.000</span>
-                        </div>
-                        <button class="w-full py-3 bg-coin text-black font-bold font-mono text-xs uppercase hover:brightness-110 transition-all shadow-hard-gold">
-                            INITIATE TRADE
-                        </button>
-                    </div>
-                </div>
-
-                <div class="min-w-[85vw] sm:min-w-[350px] md:min-w-0 snap-center flex-shrink-0 group relative bg-bg border-2 border-border hover:border-coin/50 transition-all duration-300 p-6 flex flex-col hover:-translate-y-1">
-                    <div class="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-txtDim group-hover:border-coin transition-colors"></div>
-                    <div class="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-txtDim group-hover:border-coin transition-colors"></div>
-                    <div class="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-txtDim group-hover:border-coin transition-colors"></div>
-                    <div class="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-txtDim group-hover:border-coin transition-colors"></div>
-
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="font-mono text-[10px] text-txtDim">ID: COIN_T3</div>
-                        <i class='bx bxs-server text-2xl text-border group-hover:text-coin transition-colors'></i>
-                    </div>
-                    <div class="flex-1 flex flex-col items-center text-center mb-6">
-                        <div class="w-16 h-16 rounded-full bg-surface border border-border flex items-center justify-center mb-4 shadow-[0_0_20px_-5px_rgba(0,0,0,1)] group-hover:shadow-[0_0_20px_-5px_rgba(234,179,8,0.3)] transition-all">
-                            <i class='bx bxs-package text-3xl text-txtDim group-hover:text-coin transition-colors'></i>
-                        </div>
-                        <h3 class="font-black text-white uppercase tracking-wide text-lg">LARGE CHEST</h3>
-                        <div class="text-coin font-mono font-bold text-2xl mt-1">120,000 C</div>
-                        <div class="mt-2 text-[10px] font-mono text-green-400 bg-green-400/10 px-2 py-0.5 rounded">
-                            +10% BONUS INC
-                        </div>
-                    </div>
-                    <div class="border-t border-border pt-4">
-                        <div class="flex justify-between items-center mb-3 font-mono text-xs">
-                            <span class="text-txtDim line-through">Rp 120.000</span>
-                            <span class="text-white font-bold">Rp 100.000</span>
-                        </div>
-                        <button class="w-full py-3 border border-txtDim text-txtDim font-bold font-mono text-xs uppercase hover:bg-coin hover:text-black hover:border-coin transition-all">
-                            INITIATE TRADE
-                        </button>
-                    </div>
-                </div>
-
-                <div class="min-w-[85vw] sm:min-w-[350px] md:min-w-0 snap-center flex-shrink-0 group relative bg-bg border-2 border-border hover:border-coin/50 transition-all duration-300 p-6 flex flex-col hover:-translate-y-1">
-                    <div class="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-txtDim group-hover:border-coin transition-colors"></div>
-                    <div class="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-txtDim group-hover:border-coin transition-colors"></div>
-                    <div class="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-txtDim group-hover:border-coin transition-colors"></div>
-                    <div class="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-txtDim group-hover:border-coin transition-colors"></div>
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="font-mono text-[10px] text-txtDim">ID: COIN_T4</div>
-                        <i class='bx bxs-bank text-2xl text-border group-hover:text-coin transition-colors'></i>
-                    </div>
-                    <div class="flex-1 flex flex-col items-center text-center mb-6">
-                        <div class="w-16 h-16 rounded-full bg-surface border border-border flex items-center justify-center mb-4 shadow-[0_0_20px_-5px_rgba(0,0,0,1)] group-hover:shadow-[0_0_20px_-5px_rgba(234,179,8,0.3)] transition-all">
-                            <i class='bx bxs-data text-3xl text-txtDim group-hover:text-coin transition-colors'></i>
-                        </div>
-                        <h3 class="font-black text-white uppercase tracking-wide text-lg">VAULT KEY</h3>
-                        <div class="text-coin font-mono font-bold text-2xl mt-1">300,000 C</div>
-                        <div class="mt-2 text-[10px] font-mono text-green-400 bg-green-400/10 px-2 py-0.5 rounded">
-                            +20% BONUS INC
-                        </div>
-                    </div>
-                    <div class="border-t border-border pt-4">
-                        <div class="flex justify-between items-center mb-3 font-mono text-xs">
-                            <span class="text-txtDim line-through">Rp 300.000</span>
-                            <span class="text-white font-bold">Rp 250.000</span>
-                        </div>
-                        <button class="w-full py-3 border border-txtDim text-txtDim font-bold font-mono text-xs uppercase hover:bg-coin hover:text-black hover:border-coin transition-all">
-                            INITIATE TRADE
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="vote" class="py-20 px-6 max-w-[1400px] mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            
-            <div class="lg:col-span-1">
-                <div class="border-l-4 border-txt pl-4 mb-8">
-                    <h2 class="text-3xl font-black uppercase tracking-tight text-white">NETWORK <span class="text-txtDim">UPLINK</span></h2>
-                    <p class="font-mono text-txtDim text-xs mt-1">> Vote server untuk hadiah gratis.</p>
-                </div>
-
-                <div class="tech-border p-6 bg-surface">
-                    <div class="flex justify-between items-end mb-2 font-mono">
-                        <span class="text-xs font-bold">VOTE_PARTY_PROGRESS</span>
-                        <span class="text-accent font-bold">85%</span>
-                    </div>
-                    <div class="w-full h-4 bg-bg border border-border relative overflow-hidden">
-                        <div class="h-full bg-accent progress-striped w-[85%]"></div>
-                    </div>
-                    <div class="mt-4 font-mono text-xs text-txtDim">
-                        <p>> GOAL: 1000 Votes</p>
-                        <p>> REWARD: Legendary Key All Player</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="lg:col-span-2 flex flex-col gap-3">
-                
-                <a href="#" class="tech-border p-4 flex flex-col md:flex-row items-start md:items-center justify-between hover:bg-surface group">
-                    <div class="flex items-center gap-4">
-                        <div class="font-mono text-2xl font-black text-border group-hover:text-accent">01</div>
-                        <div>
-                            <h4 class="font-bold text-lg uppercase">MINECRAFT-MP.COM</h4>
-                            <div class="flex items-center gap-2 text-xs font-mono text-txtDim">
-                                <span class="w-2 h-2 rounded-full bg-green-500"></span>
-                                STATUS: ONLINE
+                        <div class="space-y-2 md:space-y-3 z-10" id="console-output">
+                            <div class="text-gray-500">> Initializing build sequence...</div>
+                            <div class="text-blue-400">> Linking to Minecraft Protocol... OK</div>
+                            <div class="flex justify-between border-b border-gray-800 pb-2 mt-4">
+                                <span class="text-white">STATUS</span>
+                                <span class="text-green-500 font-bold">ONLINE</span>
                             </div>
-                        </div>
-                    </div>
-                    <div class="mt-3 md:mt-0 font-mono text-xs flex items-center gap-4">
-                        <div class="text-right">
-                            <span class="block text-txtDim">REWARD_DATA</span>
-                            <span class="text-accent font-bold">1x VOTE KEY</span>
-                        </div>
-                        <i class='bx bx-link-external text-xl text-txtDim group-hover:text-white'></i>
-                    </div>
-                </a>
-
-                <a href="#" class="tech-border p-4 flex flex-col md:flex-row items-start md:items-center justify-between hover:bg-surface group">
-                    <div class="flex items-center gap-4">
-                        <div class="font-mono text-2xl font-black text-border group-hover:text-accent">02</div>
-                        <div>
-                            <h4 class="font-bold text-lg uppercase">TOPG.ORG</h4>
-                            <div class="flex items-center gap-2 text-xs font-mono text-txtDim">
-                                <span class="w-2 h-2 rounded-full bg-green-500"></span>
-                                STATUS: ONLINE
+                            <div class="flex justify-between border-b border-gray-800 pb-2">
+                                <span class="text-white">TPS</span>
+                                <span class="text-green-500">20.00</span>
                             </div>
-                        </div>
-                    </div>
-                    <div class="mt-3 md:mt-0 font-mono text-xs flex items-center gap-4">
-                        <div class="text-right">
-                            <span class="block text-txtDim">REWARD_DATA</span>
-                            <span class="text-coin font-bold">$500 MONEY</span>
-                        </div>
-                        <i class='bx bx-link-external text-xl text-txtDim group-hover:text-white'></i>
-                    </div>
-                </a>
-
-                 <a href="#" class="tech-border p-4 flex flex-col md:flex-row items-start md:items-center justify-between hover:bg-surface group">
-                    <div class="flex items-center gap-4">
-                        <div class="font-mono text-2xl font-black text-border group-hover:text-accent">03</div>
-                        <div>
-                            <h4 class="font-bold text-lg uppercase">SERVERPACT</h4>
-                            <div class="flex items-center gap-2 text-xs font-mono text-txtDim">
-                                <span class="w-2 h-2 rounded-full bg-green-500"></span>
-                                STATUS: ONLINE
+                            <div class="flex justify-between border-b border-gray-800 pb-2">
+                                <span class="text-white">PLAYERS</span>
+                                <span class="text-yellow-500" id="player-count">1,240</span>
                             </div>
-                        </div>
-                    </div>
-                    <div class="mt-3 md:mt-0 font-mono text-xs flex items-center gap-4">
-                        <div class="text-right">
-                            <span class="block text-txtDim">REWARD_DATA</span>
-                            <span class="text-white font-bold">5 XP LEVELS</span>
-                        </div>
-                        <i class='bx bx-link-external text-xl text-txtDim group-hover:text-white'></i>
-                    </div>
-                </a>
+                            
+                            <div class="mt-4 md:mt-8 p-3 md:p-4 bg-gray-900 border border-gray-700 rounded text-[10px] md:text-xs text-gray-400">
+                                <span class="block text-white mb-2 font-bold">LATEST LOG:</span>
+                                <p>> [18:24:02] Player <span class="text-white">Dream</span> connected.</p>
+                            </div>
 
+                            <div class="text-white mt-4 cursor">> Waiting...</div>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute -right-2 -bottom-4 md:-right-6 md:-bottom-6 bg-white border-2 border-black p-3 md:p-4 shadow-[4px_4px_0px_0px_#000] rotate-3 scale-75 md:scale-100">
+                        <div class="font-display font-bold text-xl md:text-2xl">99.9%</div>
+                        <div class="font-mono text-[10px] md:text-xs text-gray-500">UPTIME</div>
+                    </div>
+                </div>
             </div>
+
         </div>
     </section>
 
-    <section class="py-24 px-6 max-w-[1400px] mx-auto">
-        <div class="mb-12">
-             <h2 class="text-4xl font-black uppercase tracking-tight">SYSTEM <span class="text-accent">MODULES</span></h2>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono">
-            <div class="tech-border p-6 bg-panel group hover:bg-surface">
-                <i class='bx bx-data text-4xl text-accent mb-4'></i>
-                <h3 class="font-bold text-xl text-txt mb-2 uppercase">Dynamic Economy</h3>
-                <p class="text-txtDim text-sm leading-relaxed">
-                    > Pasar dikendalikan oleh pemain. Harga berfluktuasi berdasarkan data transaksi real-time.
-                </p>
-            </div>
-            <div class="tech-border p-6 bg-panel group hover:bg-surface">
-                 <i class='bx bx-scan text-4xl text-accent mb-4'></i>
-                <h3 class="font-bold text-xl text-txt mb-2 uppercase">GRIM Sentinel</h3>
-                <p class="text-txtDim text-sm leading-relaxed">
-                    > Sistem deteksi anomali (Anti-Cheat) canggih. Integritas permainan terjamin.
-                </p>
-            </div>
-            <div class="tech-border p-6 bg-panel group hover:bg-surface">
-                 <i class='bx bx-network-chart text-4xl text-accent mb-4'></i>
-                <h3 class="font-bold text-xl text-txt mb-2 uppercase">Cross-Link Protocol</h3>
-                <p class="text-txtDim text-sm leading-relaxed">
-                    > Mendukung koneksi dari klien Java dan Bedrock (Mobile) secara bersamaan.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-bg/90 backdrop-blur-md border-t-2 border-border z-50 pb-safe px-4">
-        <div class="flex justify-between items-center h-20 font-mono">
-            <a href="#" class="flex flex-col items-center gap-1 p-2 text-accent">
-                <i class='bx bxs-terminal text-xl'></i>
-                <span class="text-[10px] font-bold uppercase">Console</span>
-            </a>
-            <a href="#store" class="flex flex-col items-center gap-1 p-2 text-txtDim hover:text-txt transition">
-                <i class='bx bxs-cart-alt text-xl'></i>
-                <span class="text-[10px] font-bold uppercase">Store</span>
-            </a>
-             <div class="relative -top-6">
-                <button onclick="copyIp()" class="w-16 h-16 bg-accent border-4 border-bg rounded-none transform rotate-45 flex items-center justify-center text-black shadow-hard hover:scale-105 transition">
-                    <i class='bx bx-play text-3xl transform -rotate-45 ml-1'></i>
-                </button>
-            </div>
-             <a href="#vote" class="flex flex-col items-center gap-1 p-2 text-txtDim hover:text-txt transition">
-                <i class='bx bxs-chart text-xl'></i>
-                <span class="text-[10px] font-bold uppercase">Vote</span>
-            </a>
-             <a href="#" class="flex flex-col items-center gap-1 p-2 text-txtDim hover:text-txt transition">
-                <i class='bx bxl-discord-alt text-xl'></i>
-                <span class="text-[10px] font-bold uppercase">Comms</span>
-            </a>
+    <div class="py-4 md:py-6 border-b-2 border-black bg-accent overflow-hidden">
+        <div class="animate-marquee whitespace-nowrap flex gap-8 md:gap-16 font-display text-lg md:text-xl font-bold text-white tracking-wider items-center">
+            <span>// LARAVEL FORGE</span> <i class='bx bxl-php'></i> 
+            <span>// VUE.JS INTEGRATION</span> <i class='bx bxl-vuejs'></i>
+            <span>// WEBSOCKET API</span> <i class='bx bx-network-chart'></i>
+            <span>// TEBEX STORE READY</span> <i class='bx bxs-store'></i>
+            <span>// DDOS PROTECTION</span> <i class='bx bx-shield-quarter'></i>
+            <span>// LARAVEL FORGE</span> <i class='bx bxl-php'></i> 
+            <span>// VUE.JS INTEGRATION</span> <i class='bx bxl-vuejs'></i>
+            <span>// WEBSOCKET API</span> <i class='bx bx-network-chart'></i>
         </div>
     </div>
 
-    <footer class="bg-panel border-t-2 border-border pt-16 pb-28 md:pb-16 px-6 font-mono text-sm">
-        <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between gap-12">
-            <div>
-                <div class="flex items-center gap-2 mb-4">
-                    <div class="w-4 h-4 bg-accent"></div>
-                    <h4 class="font-black uppercase tracking-widest text-lg">LOKAL.SMP</h4>
-                </div>
-                <p class="text-txtDim max-w-xs uppercase">
-                    > Operational since 2024.<br>
-                    > Protocol version: 1.20.x<br>
-                    > Region: ID/Asia-Pacific
-                </p>
+    <section id="features" class="py-16 md:py-24 px-4 md:px-6 bg-paper">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-12 md:mb-16">
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">Complete Arsenal.</h2>
+                <div class="w-24 h-2 bg-black"></div>
             </div>
-            <div class="flex gap-12 uppercase">
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                <div class="card-brutal p-6 md:p-8 flex flex-col justify-between h-auto md:h-80 group">
+                    <div>
+                        <div class="w-12 h-12 bg-black text-white flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class='bx bx-paint'></i>
+                        </div>
+                        <h3 class="font-display text-xl md:text-2xl font-bold mb-3">Drag & Drop Builder</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4 md:mb-0">Ubah layout website servermu semudah menyusun block di Creative Mode.</p>
+                    </div>
+                    <a href="#" class="font-mono text-xs font-bold underline decoration-2 underline-offset-4 decoration-accent">LEARN MORE -></a>
+                </div>
+
+                <div class="card-brutal p-6 md:p-8 flex flex-col justify-between h-auto md:h-80 group bg-black text-white">
+                    <div>
+                        <div class="w-12 h-12 bg-white text-black flex items-center justify-center text-2xl mb-6 group-hover:rotate-12 transition-transform">
+                            <i class='bx bx-server'></i>
+                        </div>
+                        <h3 class="font-display text-xl md:text-2xl font-bold mb-3">Live Server Sync</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4 md:mb-0">Menampilkan jumlah player & status server realtime.</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <span class="tech-badge text-black">Bungee</span>
+                        <span class="tech-badge text-black">Velocity</span>
+                    </div>
+                </div>
+
+                <div class="card-brutal p-6 md:p-8 flex flex-col justify-between h-auto md:h-80 group">
+                    <div>
+                        <div class="w-12 h-12 bg-black text-white flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class='bx bx-shopping-bag'></i>
+                        </div>
+                        <h3 class="font-display text-xl md:text-2xl font-bold mb-3">Tebex Integration</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4 md:mb-0">Konek langsung ke store donasimu. Tampilkan top donator otomatis.</p>
+                    </div>
+                    <a href="#" class="font-mono text-xs font-bold underline decoration-2 underline-offset-4 decoration-accent">SETUP GUIDE -></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="work" class="py-16 md:py-24 px-4 md:px-6 bg-black text-white relative border-y-2 border-black">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#4b5563 1px, transparent 1px); background-size: 20px 20px;"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
                 <div>
-                    <h5 class="text-txt font-bold mb-4">// DIRECTORY</h5>
-                    <ul class="space-y-2 text-txtDim">
-                        <li><a href="#" class="hover:text-accent transition">> Terms_of_Service</a></li>
-                        <li><a href="#" class="hover:text-accent transition">> Privacy_Policy</a></li>
+                    <span class="font-mono text-accent text-xs font-bold tracking-widest uppercase mb-2 block">> SYSTEM_LOGS / DEPLOYMENTS</span>
+                    <h2 class="font-display text-4xl md:text-5xl font-bold">Live Networks</h2>
+                </div>
+                
+                <div class="w-full md:w-auto overflow-x-auto pb-2 md:pb-0">
+                    <div class="flex gap-2 whitespace-nowrap" id="portfolio-filters">
+                        <button onclick="filterProjects('all')" class="filter-btn active px-4 py-2 border border-white bg-white text-black font-mono text-xs font-bold uppercase hover:bg-accent hover:text-white hover:border-accent transition-all">All</button>
+                        <button onclick="filterProjects('rpg')" class="filter-btn px-4 py-2 border border-gray-700 text-gray-400 font-mono text-xs font-bold uppercase hover:border-white hover:text-white transition-all">RPG</button>
+                        <button onclick="filterProjects('survival')" class="filter-btn px-4 py-2 border border-gray-700 text-gray-400 font-mono text-xs font-bold uppercase hover:border-white hover:text-white transition-all">Survival</button>
+                        <button onclick="filterProjects('minigames')" class="filter-btn px-4 py-2 border border-gray-700 text-gray-400 font-mono text-xs font-bold uppercase hover:border-white hover:text-white transition-all">Mini</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
+                <div class="project-card group" data-category="rpg">
+                    <div class="relative h-56 md:h-64 border-2 border-white bg-gray-900 overflow-hidden">
+                        <div class="absolute top-2 left-2 z-20 bg-black/80 backdrop-blur px-2 py-1 border border-white/20">
+                            <span class="font-mono text-[10px] text-green-400">● ONLINE (1,240)</span>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1627856014759-2a571f251d0f?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 grayscale group-hover:grayscale-0">
+                        <div class="absolute inset-0 bg-accent/90 translate-y-full group-hover:translate-y-0 transition-transform duration-300 flex items-center justify-center flex-col z-10">
+                            <h4 class="font-display text-2xl font-bold mb-2">VALHALLA</h4>
+                            <button class="bg-white text-black px-4 py-2 font-mono text-xs font-bold uppercase border-2 border-black">Visit</button>
+                        </div>
+                    </div>
+                    <div class="bg-white text-black p-4 border-x-2 border-b-2 border-white relative top-[-2px]">
+                        <div class="flex justify-between items-start">
+                            <div><h3 class="font-display text-xl font-bold">Valhalla Saga</h3><p class="font-mono text-xs text-gray-500 mt-1">ID_8821</p></div>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="project-card group" data-category="survival">
+                    <div class="relative h-56 md:h-64 border-2 border-white bg-gray-900 overflow-hidden">
+                        <div class="absolute top-2 left-2 z-20 bg-black/80 backdrop-blur px-2 py-1 border border-white/20">
+                            <span class="font-mono text-[10px] text-green-400">● ONLINE (850)</span>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1599582200683-9b2dc3e48c3f?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 grayscale group-hover:grayscale-0">
+                        <div class="absolute inset-0 bg-accent/90 translate-y-full group-hover:translate-y-0 transition-transform duration-300 flex items-center justify-center flex-col z-10">
+                            <h4 class="font-display text-2xl font-bold mb-2">EARTH MC</h4>
+                            <button class="bg-white text-black px-4 py-2 font-mono text-xs font-bold uppercase border-2 border-black">Visit</button>
+                        </div>
+                    </div>
+                    <div class="bg-white text-black p-4 border-x-2 border-b-2 border-white relative top-[-2px]">
+                        <div class="flex justify-between items-start">
+                            <div><h3 class="font-display text-xl font-bold">Earth Reborn</h3><p class="font-mono text-xs text-gray-500 mt-1">ID_1044</p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card group" data-category="minigames">
+                    <div class="relative h-56 md:h-64 border-2 border-white bg-gray-900 overflow-hidden">
+                        <div class="absolute top-2 left-2 z-20 bg-black/80 backdrop-blur px-2 py-1 border border-white/20">
+                            <span class="font-mono text-[10px] text-yellow-400">○ MAINTENANCE</span>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 grayscale group-hover:grayscale-0">
+                        <div class="absolute inset-0 bg-accent/90 translate-y-full group-hover:translate-y-0 transition-transform duration-300 flex items-center justify-center flex-col z-10">
+                            <h4 class="font-display text-2xl font-bold mb-2">NEON NET</h4>
+                            <button class="bg-white text-black px-4 py-2 font-mono text-xs font-bold uppercase border-2 border-black">Visit</button>
+                        </div>
+                    </div>
+                    <div class="bg-white text-black p-4 border-x-2 border-b-2 border-white relative top-[-2px]">
+                        <div class="flex justify-between items-start">
+                            <div><h3 class="font-display text-xl font-bold">Neon Network</h3><p class="font-mono text-xs text-gray-500 mt-1">ID_5502</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 border-t border-gray-800 pt-8 flex justify-center">
+                <button class="font-mono text-xs text-gray-400 hover:text-white flex items-center gap-2">
+                    <i class='bx bx-loader-alt animate-spin'></i> LOAD ARCHIVE
+                </button>
+            </div>
+        </div>
+    </section>
+
+   <section id="pricing" class="py-16 md:py-24 px-4 md:px-6 border-y-2 border-black bg-white relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-12 md:mb-16">
+                <span class="font-mono text-accent text-sm font-bold tracking-widest uppercase">Investment</span>
+                <h2 class="font-display text-4xl md:text-5xl font-bold mt-2 mb-6">Pilih Paketmu</h2>
+                <p class="text-gray-500 text-sm md:text-base">Server kecil atau network raksasa, kami siap.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-end">
+                
+                <div class="border-2 border-gray-200 p-6 md:p-8 hover:border-black transition-colors order-2 md:order-1 relative group">
+                    <div class="absolute top-0 right-0 bg-yellow-300 border-l-2 border-b-2 border-black text-black text-[10px] font-bold px-3 py-1 font-mono uppercase">
+                        Trial 24 Jam
+                    </div>
+                    
+                    <h3 class="font-display text-xl md:text-2xl font-bold">Starter</h3>
+                    <div class="my-4 flex items-baseline gap-1">
+                        <span class="text-3xl md:text-4xl font-bold font-mono">Rp 20k</span>
+                        <span class="text-gray-500 text-xs font-mono">/BULAN</span>
+                    </div>
+                    
+                    <div class="mb-8 h-auto md:h-12 flex items-center">
+                        <p class="text-xs font-mono bg-black text-white px-2 py-1 inline-block">
+                            <i class='bx bx-timer animate-pulse'></i> Bisa uji coba 1 Hari
+                        </p>
+                    </div>
+
+                    <ul class="space-y-3 text-sm font-mono mb-8">
+
+                        <li class="flex items-center gap-2"><i class='bx bx-check text-green-500'></i> Aktif 1 Bulan</li>
+                        <li class="flex items-center gap-2"><i class='bx bx-check text-green-500'></i> Pembelian Ke Whatshapp & Discord</li>
+                        <li class="flex items-center gap-2"><i class='bx bx-check text-green-500'></i> Bisa Pake Domain Sendiri</li>
+                        <li class="flex items-center gap-2"><i class='bx bx-check text-green-500'></i> Tidak Perlu Hosting Web</li>
+                                  <li class="flex items-center gap-2"><i class='bx bx-check text-green-500'></i> Free Domain my.id, web.id</li>
+
+                        <li class="flex items-center gap-2 text-gray-400"><i class='bx bx-x'></i> Full Acces Source code</li>
+
+                        <li class="flex items-center gap-2 text-gray-400"><i class='bx bx-x'></i> Pembayaran Otomatis</li>
+                    </ul>
+                    <button class="w-full border-2 border-black py-3 font-bold text-sm hover:bg-black hover:text-white transition-colors uppercase">
+                        Coba Gratis 1 Hari
+                    </button>
+                </div>
+
+                <div class="card-brutal p-6 md:p-8 bg-black text-white relative transform md:-translate-y-4 order-1 md:order-2 shadow-[8px_8px_0px_0px_#3b82f6]">
+                    <div class="absolute top-0 right-0 bg-accent text-white text-[10px] font-bold px-3 py-1 font-mono uppercase">Most Picked</div>
+                    <h3 class="font-display text-xl md:text-2xl font-bold text-accent">Professional</h3>
+                    <div class="my-4 flex items-baseline gap-1">
+                        <span class="text-3xl md:text-4xl font-bold font-mono">Rp 50k</span>
+                        <span class="text-gray-400 text-xs font-mono">/BULAN</span>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-8 h-auto md:h-12 flex items-center">Fitur lengkap untuk server komunitas berkembang.</p>
+                    <ul class="space-y-3 text-sm font-mono mb-8">
+                                                <li class="flex items-center gap-2"><i class='bx bx-check text-green-500'></i> Otimasi SEO</li>
+                        <li class="flex items-center gap-2"><i class='bx bx-check text-green-500'></i> Aktif 1 Bulan</li>
+                        <li class="flex items-center gap-2"><i class='bx bx-check text-green-500'></i> Pembayaran Otomatis Payment Gateway</li>
+                                                <li class="flex items-center gap-2"><i class='bx bx-check text-green-500'></i> Tidak Perlu Hosting Web</li>
+                        <li class="flex items-center gap-2"><i class='bx bx-check text-green-500'></i> Bisa Pake Domain Sendiri</li>
+                                            <li class="flex items-center gap-2"><i class='bx bx-check text-green-500'></i> Integrasi Discord & WhatsApp</li>
+                                  <li class="flex items-center gap-2"><i class='bx bx-check text-green-500'></i> Free Domain my.id, web.id</li>
+                                   <li class="flex items-center gap-2"><i class='bx bx-check text-green-500'></i> Terbuka Semua Fitur</li>
+                                                           <li class="flex items-center gap-2 text-gray-400"><i class='bx bx-x'></i> Full Acces Source code</li>
+                                   
+                    </ul>
+                    <button class="w-full bg-accent text-white py-3 font-bold text-sm hover:bg-white hover:text-black border-2 border-accent transition-colors uppercase">
+                        Upgrade Now
+                    </button>
+                </div>
+
+                <div class="border-2 border-gray-200 p-6 md:p-8 hover:border-black transition-colors order-3">
+                    <h3 class="font-display text-xl md:text-2xl font-bold">Custom Web</h3>
+                    <div class="my-4 flex items-baseline gap-1">
+                        <span class="text-3xl md:text-4xl font-bold font-mono">Rp 399k</span>
+                        <span class="text-gray-500 text-xs font-mono">SOURCECODE PERMANENT</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-8 h-auto md:h-12 flex items-center">
+    Skala masif untuk network server besar.
+</p>
+<ul class="space-y-3 text-sm font-mono mb-8">
+    <li class="flex items-center gap-2"><i class='bx bx-check text-green-500'></i> Request Tampilan Sesukamu</li>
+    <li class="flex items-center gap-2"><i class='bx bx-check text-green-500'></i> Optimasi SEO</li>
+    <li class="flex items-center gap-2"><i class='bx bx-check text-green-500'></i> Mendapatkan Source Code</li>
+
+ <li class="flex items-center gap-2"><i class='bx bx-check text-green-500'></i> Custom Fitur</li>
+    <!-- Tambahan fitur baru -->
+    <li class="flex items-center gap-2"><i class='bx bx-check text-green-500'></i> Performa Jossz</li>
+    <li class="flex items-center gap-2"><i class='bx bx-check text-green-500'></i> Mendapatkan Licensi</li>
+    <li class="flex items-center gap-2"><i class='bx bx-check text-green-500'></i> Gratis Setup Awal</li>
+    <li class="flex items-center gap-2"><i class='bx bx-check text-green-500'></i> Mendapatkan 2x Maintance</li>
+</ul>
+
+                    <button class="w-full border-2 border-black py-3 font-bold text-sm hover:bg-gray-50 transition-colors uppercase">
+                        Contact Sales
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-16 md:py-24 px-4 md:px-6 max-w-4xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold mb-8 md:mb-12 text-center">Frequently Asked Questions</h2>
+        
+        <div class="space-y-4">
+            <div class="accordion-item border-2 border-black bg-white group cursor-pointer" onclick="toggleAccordion(this)">
+                <div class="p-4 md:p-6 flex justify-between items-center bg-gray-50 group-hover:bg-accent group-hover:text-white transition-colors">
+                    <h3 class="font-display font-bold text-base md:text-lg">Apakah butuh hosting?</h3>
+                    <i class='bx bx-chevron-down text-2xl transition-transform duration-300'></i>
+                </div>
+                <div class="accordion-content bg-white">
+                    <div class="p-4 md:p-6 text-sm md:text-base text-gray-600 leading-relaxed border-t border-black">
+                        Tidak perlu. Aether Architect menyediakan cloud hosting gratis.
+                    </div>
+                </div>
+            </div>
+             </div>
+    </section>
+
+    <footer class="bg-black text-white py-12 md:py-16 px-6 border-t-4 border-accent">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center gap-2 mb-6">
+                    <div class="w-8 h-8 bg-white text-black flex items-center justify-center font-bold text-lg rounded-sm">A</div>
+                    <span class="font-display font-bold text-2xl tracking-tighter">AETHER</span>
+                </div>
+                <p class="text-gray-400 text-sm max-w-sm font-mono mb-8">
+                    Membangun masa depan infrastruktur server Minecraft.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 border border-gray-700 flex items-center justify-center hover:bg-white hover:text-black transition-colors"><i class='bx bxl-discord text-xl'></i></a>
+                    <a href="#" class="w-10 h-10 border border-gray-700 flex items-center justify-center hover:bg-white hover:text-black transition-colors"><i class='bx bxl-github text-xl'></i></a>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-8 md:col-span-2">
+                <div>
+                    <h4 class="font-display font-bold text-lg mb-6 text-accent">PRODUCT</h4>
+                    <ul class="space-y-4 text-sm text-gray-400 font-mono">
+                        <li><a href="#" class="hover:text-white">Features</a></li>
+                        <li><a href="#" class="hover:text-white">Pricing</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h5 class="text-txt font-bold mb-4">// NETWORK</h5>
-                    <ul class="space-y-2 text-txtDim">
-                        <li><a href="#" class="hover:text-accent transition">> Discord_Server</a></li>
-                        <li><a href="#" class="hover:text-accent transition">> Status_Page</a></li>
+                    <h4 class="font-display font-bold text-lg mb-6 text-accent">LEGAL</h4>
+                    <ul class="space-y-4 text-sm text-gray-400 font-mono">
+                        <li><a href="#" class="hover:text-white">Privacy</a></li>
+                        <li><a href="#" class="hover:text-white">Terms</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="max-w-[1400px] mx-auto mt-12 pt-6 border-t-2 border-border text-txtDim text-xs flex justify-between">
-            <span>© 2025 LOKAL SYSTEM.</span>
-            <span>NOT AFFILIATED WITH MOJANG AB.</span>
+        
+        <div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between text-xs font-mono text-gray-500">
+            <p>© 2025 AETHER ARCHITECT.</p>
+            <div class="flex gap-4 mt-4 md:mt-0">
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    SYSTEM ONLINE
+                </div>
+            </div>
         </div>
     </footer>
 
     <script>
-        function copyIp() {
-            navigator.clipboard.writeText("play.lokal.id");
-            const btn = document.getElementById('ip-btn-text');
-            const original = btn.innerText;
-            btn.innerText = "ADDRESS COPIED";
-            setTimeout(() => {
-                btn.innerText = original;
-            }, 2000);
-        }
+        // 1. Mobile Menu Logic (NEW)
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = mobileBtn.querySelector('i');
 
-        async function updateStatus() {
-            const heroCount = document.getElementById('player-count-hero');
-            const topCount = document.getElementById('player-count-top');
-            const ip = "play.kaizenmc.id";
+        mobileBtn.addEventListener('click', toggleMobileMenu);
 
-            try {
-                const res = await fetch(`https://api.mcsrvstat.us/2/${ip}`);
-                const data = await res.json();
-                
-                if(data.online) {
-                    heroCount.innerText = data.players.online + " OPERATIVES";
-                    topCount.innerText = "ONLINE [" + data.players.online + "]";
-                    topCount.classList.add('text-accent');
-                } else {
-                    heroCount.innerText = "OFFLINE";
-                    topCount.innerText = "SYSTEM OFFLINE";
-                    topCount.classList.remove('text-accent');
-                    topCount.classList.add('text-red-500');
-                }
-            } catch {
-                heroCount.innerText = "DATA_ERR";
-                topCount.innerText = "CONNECTION_LOST";
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+            // Ganti icon menu
+            if (mobileMenu.classList.contains('translate-x-full')) {
+                menuIcon.classList.remove('bx-x');
+                menuIcon.classList.add('bx-menu');
+            } else {
+                menuIcon.classList.remove('bx-menu');
+                menuIcon.classList.add('bx-x');
             }
         }
-        updateStatus();
-        setInterval(updateStatus, 30000);
+
+        // 2. Portfolio Filter Logic
+        function filterProjects(category) {
+            const cards = document.querySelectorAll('.project-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-white', 'text-black', 'border-white'); 
+                btn.classList.add('text-gray-400', 'border-gray-700'); 
+                
+                if(btn.innerText.toLowerCase().includes(category) || (category === 'all' && btn.innerText.includes('All'))) {
+                    btn.classList.remove('text-gray-400', 'border-gray-700');
+                    btn.classList.add('bg-white', 'text-black', 'border-white');
+                }
+            });
+
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                    card.style.opacity = '0';
+                    setTimeout(() => card.style.opacity = '1', 50);
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // 3. Player Count & Accordion Logic
+        const playerCount = document.getElementById('player-count');
+        setInterval(() => {
+            if(!playerCount) return;
+            let current = parseInt(playerCount.innerText.replace(',', ''));
+            let change = Math.floor(Math.random() * 10) - 4; 
+            let newValue = current + change;
+            playerCount.innerText = newValue.toLocaleString();
+        }, 3000);
+
+        function toggleAccordion(element) {
+            const allItems = document.querySelectorAll('.accordion-item');
+            allItems.forEach(item => {
+                if (item !== element) item.classList.remove('active');
+            });
+            element.classList.toggle('active');
+        }
+
+        // 4. Console Logger
+        const logs = [
+            "> New purchase: MVP+ Rank",
+            "> Backup started...",
+            "> Backup completed",
+            "> User banned (FlyHack)",
+            "> Server restart pending..."
+        ];
+        const consoleOutput = document.getElementById('console-output');
+        
+        setInterval(() => {
+            if(!consoleOutput) return;
+            const randomLog = logs[Math.floor(Math.random() * logs.length)];
+            const p = document.createElement('div');
+            p.className = "text-gray-400 text-[10px] md:text-xs mt-1 animate-pulse";
+            p.innerText = randomLog;
+            consoleOutput.appendChild(p);
+            
+            if(consoleOutput.children.length > 5) {
+                consoleOutput.removeChild(consoleOutput.children[0]);
+            }
+        }, 5000);
     </script>
 </body>
 </html>
